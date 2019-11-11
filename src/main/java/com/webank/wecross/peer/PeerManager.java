@@ -346,7 +346,7 @@ public class PeerManager {
 
     private void workLoop() {
         try {
-            addMockResources();
+            // addMockResources();
             maintainPeerConnections();
             syncWithPeerNetworks();
             broadcastSeqRequest();
