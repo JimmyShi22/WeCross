@@ -41,7 +41,7 @@ jobs:
       - name: run ci_cross_gm_demo_check.sh
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF}
 
-  2groups:
+  groups-groups:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
