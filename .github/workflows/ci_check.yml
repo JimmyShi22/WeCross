@@ -3,7 +3,7 @@
 
 name: actions check
 
-on: pull_request
+on: [push, pull_request]
 
 jobs:
   unittest:
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: run ci_check.sh
+      - name: run ci_demo_check.sh
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF}
 
   normal-gm:
@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: run ci_check.sh
+      - name: run ci_cross_gm_demo_check.sh
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF}
 
   2groups:
@@ -49,5 +49,5 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: run ci_check.sh
+      - name: run ci_cross_groups_demo_check.sh
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF}
