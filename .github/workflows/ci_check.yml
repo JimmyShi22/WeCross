@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql root password: ${{CI_DB_PASSWORD}}
+          mysql root password: ${{ secrets.CI_DB_PASSWORD }}
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -34,7 +34,7 @@ jobs:
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
         env:
-          CI_DB_PASSWORD : ${{ CI_DB_PASSWORD }}
+          CI_DB_PASSWORD : ${{ secrets.CI_DB_PASSWORD }}
 
   normal-gm:
     runs-on: ubuntu-18.04
@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql root password: ${{CI_DB_PASSWORD}}
+          mysql root password: ${{ secrets.CI_DB_PASSWORD }}
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -51,7 +51,7 @@ jobs:
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
         env:
-          CI_DB_PASSWORD : ${{ CI_DB_PASSWORD }}
+          CI_DB_PASSWORD : ${{ secrets.CI_DB_PASSWORD }}
 
   groups-groups:
     runs-on: ubuntu-18.04
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql root password: ${{CI_DB_PASSWORD}}
+          mysql root password: ${{ secrets.CI_DB_PASSWORD }}
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -68,4 +68,4 @@ jobs:
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
         env:
-          CI_DB_PASSWORD : ${{ CI_DB_PASSWORD }}
+          CI_DB_PASSWORD : ${{ secrets.CI_DB_PASSWORD }}
