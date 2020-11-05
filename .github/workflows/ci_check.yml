@@ -40,11 +40,11 @@ jobs:
 
   normal-gm:
     runs-on: ubuntu-18.04
-          mydb:
-            mydb:
-              image: mysql:5.7
-              env:
-                MYSQL_ROOT_PASSWORD : '123456'
+    services:
+      mydb:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD : '123456'
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -59,11 +59,11 @@ jobs:
 
   groups-groups:
     runs-on: ubuntu-18.04
-            image: mysql:5.7
-            mydb:
-              image: mysql:5.7
-              env:
-                MYSQL_ROOT_PASSWORD : '123456'
+    services:
+      mydb:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD : '123456'
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
