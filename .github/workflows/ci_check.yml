@@ -29,13 +29,14 @@ jobs:
           java-version: 1.8
       - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql user: 'test'
-          mysql password: '123456'
+          mysql root password: '123456'
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
       - name: run ci_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
+        env:
+          CI_DB_PASSWORD : '123456'
 
   normal-gm:
     runs-on: ubuntu-18.04
@@ -47,19 +48,20 @@ jobs:
           java-version: 1.8
       - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql user: 'test'
-          mysql password: '123456'
+          mysql root password: '123456'
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
       - name: Verify MySQL connection from host
         run: |
           sudo apt-get install -y mysql-client
-          mysql -u root --password='' -h 127.0.0.1 -P 3306 -e 'status;'
-          mysql --host 127.0.0.1 --port 3306 -uroot -e "SHOW DATABASES"
+          mysql -u root --password=123456 -h 127.0.0.1 -P 3306 -e 'status;'
+          mysql --host 127.0.0.1 --port 3306 -uroot -p123456 -e "SHOW DATABASES"
 
       - name: run ci_cross_gm_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
+        env:
+          CI_DB_PASSWORD : '123456'
 
   groups-groups:
     runs-on: ubuntu-18.04
@@ -71,10 +73,11 @@ jobs:
           java-version: 1.8
       - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql user: 'test'
-          mysql password: '123456'
+          mysql root password: '123456'
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
       - name: run ci_cross_groups_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
+        env:
+          CI_DB_PASSWORD : '123456'
