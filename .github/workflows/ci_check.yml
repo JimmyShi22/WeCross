@@ -33,7 +33,7 @@ jobs:
         with:
           java-version: 1.8
       - name: setup mysql client
-        run: sudo apt-get install -y mysql-client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
       - name: run ci_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
@@ -54,7 +54,7 @@ jobs:
         with:
           java-version: 1.8
       - name: setup mysql client
-        run: sudo apt-get install -y mysql-client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
       - name: run ci_cross_gm_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
@@ -75,7 +75,7 @@ jobs:
         with:
           java-version: 1.8
       - name: setup mysql client
-        run: sudo apt-get install -y mysql-client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
       - name: run ci_cross_groups_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}

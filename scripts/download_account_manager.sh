@@ -75,6 +75,14 @@ check_command() {
     fi
 }
 
+check_command() {
+    local cmd=${1}
+    if [ -z "$(command -v ${cmd})" ]; then
+        LOG_ERROR "${cmd} is not installed."
+        exit 1
+    fi
+}
+
 query_db() {
     if [ ${DB_PASSWORD} ]; then
         mysql -u ${DB_USERNAME} --password="${DB_PASSWORD}" -h ${DB_IP} -P ${DB_PORT} $@ 2>/dev/null
@@ -243,6 +251,7 @@ database_init() {
 }
 
 main() {
+    check_command mysql
     config_database
     if [ 1 -eq ${enable_build_from_resource} ]; then
         build_from_source
