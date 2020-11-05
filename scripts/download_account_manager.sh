@@ -17,7 +17,7 @@ need_db_config_ask=true
 DB_IP=localhost
 DB_PORT=3306
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=${CI_DB_PASSWORD}
 
 LOG_INFO() {
     echo -e "\033[32m[INFO] $@\033[0m"
