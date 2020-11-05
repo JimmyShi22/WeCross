@@ -28,7 +28,7 @@ jobs:
         with:
           java-version: 1.8
       - uses: mirromutth/mysql-action@v1.1
-        with：
+        with:
           mysql root password: '123456'
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
@@ -47,7 +47,7 @@ jobs:
         with:
           java-version: 1.8
       - uses: mirromutth/mysql-action@v1.1
-        with：
+        with:
           mysql root password: '123456'
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
@@ -72,7 +72,7 @@ jobs:
         with:
           java-version: 1.8
       - uses: mirromutth/mysql-action@v1.1
-        with：
+        with:
           mysql root password: '123456'
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
