@@ -27,6 +27,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: install ubuntu dependencies
+          run: sudo apt install -y openssl
+          #run: sudo apt install -y git curl build-essential clang cmake openssl libssl-dev zlib1g-dev ccache libgmp-dev flex bison git curl libssl-dev default-jdk build-essential
       - uses: mirromutth/mysql-action@v1.1
         with:
           mysql root password: '123456'
@@ -46,6 +49,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: install ubuntu dependencies
+          run: sudo apt install -y openssl
       - uses: mirromutth/mysql-action@v1.1
         with:
           mysql root password: '123456'
@@ -71,6 +76,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: install ubuntu dependencies
+          run: sudo apt install -y openssl
       - uses: mirromutth/mysql-action@v1.1
         with:
           mysql root password: '123456'
