@@ -14,7 +14,7 @@ wecross_account_manager_url=https://github.com/WeBankFinTech/WeCross-Account-Man
 wecross_account_manager_branch=${default_compatibility_version}
 
 need_db_config_ask=true
-DB_IP=localhost
+DB_IP=127.0.0.1
 DB_PORT=3306
 DB_USERNAME=root
 DB_PASSWORD=${CI_DB_PASSWORD}
