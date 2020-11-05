@@ -25,7 +25,7 @@ jobs:
       mydb:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: '123456'
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -37,6 +37,8 @@ jobs:
       - name: run ci_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
+        env:
+          CI_DB_PASSWORD : '123456'
 
   normal-gm:
     runs-on: ubuntu-18.04
@@ -44,7 +46,7 @@ jobs:
       mydb:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: '123456'
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -56,6 +58,8 @@ jobs:
       - name: run ci_cross_gm_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
+        env:
+          CI_DB_PASSWORD : '123456'
 
   groups-groups:
     runs-on: ubuntu-18.04
@@ -63,7 +67,7 @@ jobs:
       mydb:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: '123456'
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -75,3 +79,5 @@ jobs:
       - name: run ci_cross_groups_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
+        env:
+          CI_DB_PASSWORD : '123456'
