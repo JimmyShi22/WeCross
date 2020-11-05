@@ -428,6 +428,8 @@ main() {
 
     netstat -napl |grep 20200
     netstat -napl |grep 20210
+    cat ${ROOT}/bcos/nodes/127.0.0.1/node0/logs/*
+
 
     # Start up routers
     cd ${ROOT}/routers-payment/127.0.0.1-8250-25500/
