@@ -37,8 +37,6 @@ jobs:
       - name: run ci_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
-        env:
-          CI_DB_PASSWORD : 'root'
 
   normal-gm:
     runs-on: ubuntu-18.04
@@ -58,8 +56,6 @@ jobs:
       - name: run ci_cross_gm_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
-        env:
-          CI_DB_PASSWORD : 'root'
 
   groups-groups:
     runs-on: ubuntu-18.04
@@ -79,5 +75,3 @@ jobs:
       - name: run ci_cross_groups_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
-        env:
-          CI_DB_PASSWORD : 'root'
