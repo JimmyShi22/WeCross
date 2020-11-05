@@ -55,6 +55,12 @@ jobs:
           java-version: 1.8
       - name: setup mysql client
         run: sudo apt-get update && sudo apt-get install -y mysql-client
+      - name: Verify MySQL connection from host
+        run: |
+          sudo apt-get install -y mysql-client
+          mysql -u root --password=123456 -h 127.0.0.1 -P 3306 -e 'status;'
+          mysql --host 127.0.0.1 --port 3306 -uroot -p123456 -e "SHOW DATABASES"
+
       - name: run ci_cross_gm_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_gm_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
