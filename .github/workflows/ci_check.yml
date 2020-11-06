@@ -27,14 +27,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: install ubuntu dependencies
-          run: sudo apt install -y openssl
-          #run: sudo apt install -y git curl build-essential clang cmake openssl libssl-dev zlib1g-dev ccache libgmp-dev flex bison git curl libssl-dev default-jdk build-essential
       - uses: mirromutth/mysql-action@v1.1
         with:
           mysql root password: '123456'
-      - name: setup mysql client
-        run: sudo apt-get update && sudo apt-get install -y mysql-client
+      - name: setup requirements
+        run: sudo apt-get update && sudo apt-get install -y mysql-client openssl
       - name: run ci_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
@@ -54,8 +51,8 @@ jobs:
       - uses: mirromutth/mysql-action@v1.1
         with:
           mysql root password: '123456'
-      - name: setup mysql client
-        run: sudo apt-get update && sudo apt-get install -y mysql-client
+      - name: setup requirements
+        run: sudo apt-get update && sudo apt-get install -y mysql-client openssl
       - name: Verify MySQL connection from host
         run: |
           sudo apt-get install -y mysql-client
@@ -81,8 +78,8 @@ jobs:
       - uses: mirromutth/mysql-action@v1.1
         with:
           mysql root password: '123456'
-      - name: setup mysql client
-        run: sudo apt-get update && sudo apt-get install -y mysql-client
+      - name: setup requirements
+        run: sudo apt-get update && sudo apt-get install -y mysql-client openssl
       - name: run ci_cross_groups_demo_check.sh
         # The script only use ${1} as branch name. if GITHUB_BASE_REF is blank use GITHUB_REF
         run: bash .ci/ci_cross_groups_demo_check.sh ${GITHUB_BASE_REF} ${GITHUB_REF#refs/heads/}
